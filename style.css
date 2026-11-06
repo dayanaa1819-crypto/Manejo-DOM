@@ -1,0 +1,106 @@
+/* Restablecimiento de márgenes y tipografía general */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+    background-color: #f2f4f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Tarjeta contenedora blanca con sombra */
+.card {
+    background-color: #ffffff;
+    width: 100%;
+    max-width: 460px;
+    padding: 40px 32px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    text-align: center;
+}
+
+/* Encabezados */
+.card-title {
+    color: #1e293b;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.card-subtitle {
+    color: #64748b;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    margin-bottom: 24px;
+}
+
+/* Número del contador */
+.counter-display {
+    color: #ff62d0;
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+/* Botón verde con sombra sutil */
+.btn-primary {
+    background-color: #f8a6ff;
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 32px;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(34, 197, 94, 0.35);
+    transition: background-color 0.2s, transform 0.1s;
+    margin-bottom: 32px;
+}
+
+.btn-primary:hover {
+    background-color: #16a34a;
+}
+
+.btn-primary:active {
+    transform: scale(0.97);
+}
+.records-table {
+    width: 100%;
+    border-collapse: collapse;
+    /* Borde gris más marcado */
+    border: 1px solid #d1d5db; 
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.records-table th,
+.records-table td {
+    padding: 12px 16px;
+    text-align: center;
+    font-size: 0.95rem;
+}
+
+/* Encabezados más oscuros y definidos */
+.records-table th {
+    background-color: #f8fafc;
+    color: #64748b; /* Azul grisáceo oscuro */
+    font-weight: 700;
+    border-bottom: 1px solid #d1d5db;
+}
+
+/* Números y texto de las filas más oscuros */
+.records-table td {
+    color: #334155; /* Texto oscuro definido */
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.records-table tbody tr:last-child td {
+    border-bottom: none;
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactividad con el DOM</title>
+    <!-- ¡IMPORTANTE! Vincular el archivo CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main class="card">
+        <h1 class="card-title">Interactividad con el DOM</h1>
+        <p class="card-subtitle">
+            Haz clic en el botón para incrementar el contador y registrar la hora exacta del evento en la tabla.
+        </p>
+
+        <!-- Contador grande -->
+        <div id="contador" class="counter-display">0</div>
+
+        <!-- Botón verde -->
+        <button id="btn-like" class="btn-primary">¡Haz Clic Aquí!</button>
+
+        <!-- Tabla estructurada -->
+        <table class="records-table">
+            <thead>
+                <tr>
+                    <th>Nº Clic</th>
+                    <th>Hora</th>
+                </tr>
+            </thead>
+            <tbody id="tabla-registros">
+                <!-- Registros dinámicos -->
+            </tbody>
+        </table>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
