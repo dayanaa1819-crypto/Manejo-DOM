@@ -39,6 +39,9 @@ export default function App() {
     }
   };
 
+  // Función del Reto 2: Si supera 10, cambia el color del número
+  const esAlerta = contador > 10;
+
   return (
     <View style={estilos.body}>
       <View style={estilos.container}>
@@ -47,7 +50,8 @@ export default function App() {
           Haz clic para sumar o restar clics. Al pasar de 10, el contador cambia de color (Retos del SENA).
         </Text>
         
-        <Text style={estilos.counterBox}>
+        {/* Contador dinámico con cambio de color si es mayor a 10 */}
+        <Text style={[estilos.counterBox, esAlerta ? estilos.counterAlert : null]}>
           {contador}
         </Text>
 
@@ -93,6 +97,7 @@ const estilos = StyleSheet.create({
   h1: { fontSize: 20, fontWeight: "bold", color: "#333", textAlign: "center", marginBottom: 8 },
   description: { fontSize: 13, color: "#666", textAlign: "center", marginBottom: 15 },
   counterBox: { fontSize: 48, color: "#2196F3", fontWeight: "bold", marginBottom: 15 },
+  counterAlert: { color: "#E91E63" }, // Color especial cuando pasa de 10 (Reto 2)
   btnClick: { backgroundColor: "#4CAF50", padding: 10, borderRadius: 8, width: "100%", alignItems: "center", marginBottom: 10 },
   btnRestar: { backgroundColor: "#FF5722", padding: 10, borderRadius: 8, width: "100%", alignItems: "center", marginBottom: 15 },
   btnText: { color: "white", fontSize: 15, fontWeight: "bold" },
