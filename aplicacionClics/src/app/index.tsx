@@ -1,17 +1,24 @@
 import { useState } from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 export default function App() {
   const [contador, setContador] = useState(0);
+  const [registros, setRegistros] = useState<any[]>([]);
 
-  // Función para incrementar con captura de hora
+  // Función para incrementar y registrar en el historial
   const incrementarContador = () => {
     const nuevoContador = contador + 1;
     const ahora = new Date();
     const horaFormateada = ahora.toLocaleTimeString();
 
     setContador(nuevoContador);
-    console.log("Hora registrada:", horaFormateada);
+
+    const nuevoRegistro = {
+      id: Date.now().toString(),
+      numero: nuevoContador,
+      hora: horaFormateada,
+    };
+    setRegistros([nuevoRegistro, ...registros]);
   };
 
   return (
@@ -32,6 +39,22 @@ export default function App() {
         >
           <Text style={estilos.btnText}>¡Sumar Clic (+)</Text>
         </TouchableOpacity>
+
+        <View style={estilos.tableContainer}>
+          <View style={estilos.tableHeader}>
+            <Text style={[estilos.th, estilos.cellNumero]}>N° Clic</Text>
+            <Text style={[estilos.th, estilos.cellHora]}>Hora / Acción</Text>
+          </View>
+
+          <ScrollView style={estilos.tableBody}>
+            {registros.map((item) => (
+              <View key={item.id} style={estilos.tr}>
+                <Text style={[estilos.td, estilos.cellNumero]}>{item.numero}</Text>
+                <Text style={[estilos.td, estilos.cellHora]}>{item.hora}</Text>
+              </View>
+            ))}
+          </ScrollView>
+        </View>
       </View>
     </View>
   );
@@ -45,4 +68,12 @@ const estilos = StyleSheet.create({
   counterBox: { fontSize: 48, color: "#2196F3", fontWeight: "bold", marginBottom: 15 },
   btnClick: { backgroundColor: "#4CAF50", padding: 10, borderRadius: 8, width: "100%", alignItems: "center", marginBottom: 10 },
   btnText: { color: "white", fontSize: 15, fontWeight: "bold" },
-}); 
+  tableContainer: { width: "100%", maxHeight: 160, borderWidth: 1, borderColor: "#ddd", borderRadius: 6 },
+  tableHeader: { flexDirection: "row", backgroundColor: "#f8f9fa", borderBottomWidth: 1, borderBottomColor: "#ddd", paddingVertical: 6 },
+  tableBody: { maxHeight: 110 },
+  tr: { flexDirection: "row", borderBottomWidth: 1, borderBottomColor: "#eee", paddingVertical: 6 },
+  td: { fontSize: 12, color: "#333", textAlign: "center" },
+  th: { fontSize: 12, fontWeight: "bold", color: "#333", textAlign: "center" },
+  cellNumero: { flex: 1 },
+  cellHora: { flex: 1.5 },
+});
