@@ -5,7 +5,7 @@ export default function App() {
   const [contador, setContador] = useState(0);
   const [registros, setRegistros] = useState<any[]>([]);
 
-  // Función para incrementar y registrar en el historial
+  // Función para incrementar
   const incrementarContador = () => {
     const nuevoContador = contador + 1;
     const ahora = new Date();
@@ -21,6 +21,24 @@ export default function App() {
     setRegistros([nuevoRegistro, ...registros]);
   };
 
+  // Función del Reto 1: Restar Like
+  const decrementarContador = () => {
+    if (contador > 0) {
+      const nuevoContador = contador - 1;
+      const ahora = new Date();
+      const horaFormateada = ahora.toLocaleTimeString();
+
+      setContador(nuevoContador);
+
+      const nuevoRegistro = {
+        id: Date.now().toString(),
+        numero: nuevoContador,
+        hora: `${horaFormateada} (Restado)`,
+      };
+      setRegistros([nuevoRegistro, ...registros]);
+    }
+  };
+
   return (
     <View style={estilos.body}>
       <View style={estilos.container}>
@@ -33,11 +51,20 @@ export default function App() {
           {contador}
         </Text>
 
+        {/* Botón de Sumar */}
         <TouchableOpacity
           style={estilos.btnClick}
           onPress={incrementarContador}
         >
           <Text style={estilos.btnText}>¡Sumar Clic (+)</Text>
+        </TouchableOpacity>
+
+        {/* Botón del Reto 1: Restar */}
+        <TouchableOpacity
+          style={estilos.btnRestar}
+          onPress={decrementarContador}
+        >
+          <Text style={estilos.btnText}>Restar Clic (-)</Text>
         </TouchableOpacity>
 
         <View style={estilos.tableContainer}>
@@ -67,6 +94,7 @@ const estilos = StyleSheet.create({
   description: { fontSize: 13, color: "#666", textAlign: "center", marginBottom: 15 },
   counterBox: { fontSize: 48, color: "#2196F3", fontWeight: "bold", marginBottom: 15 },
   btnClick: { backgroundColor: "#4CAF50", padding: 10, borderRadius: 8, width: "100%", alignItems: "center", marginBottom: 10 },
+  btnRestar: { backgroundColor: "#FF5722", padding: 10, borderRadius: 8, width: "100%", alignItems: "center", marginBottom: 15 },
   btnText: { color: "white", fontSize: 15, fontWeight: "bold" },
   tableContainer: { width: "100%", maxHeight: 160, borderWidth: 1, borderColor: "#ddd", borderRadius: 6 },
   tableHeader: { flexDirection: "row", backgroundColor: "#f8f9fa", borderBottomWidth: 1, borderBottomColor: "#ddd", paddingVertical: 6 },
