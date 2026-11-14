@@ -1,8 +1,12 @@
 import { useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 export default function App() {
   const [contador, setContador] = useState(0);
+
+  const incrementarContador = () => {
+    setContador(contador + 1);
+  };
 
   return (
     <View style={estilos.body}>
@@ -15,6 +19,13 @@ export default function App() {
         <Text style={estilos.counterBox}>
           {contador}
         </Text>
+
+        <TouchableOpacity
+          style={estilos.btnClick}
+          onPress={incrementarContador}
+        >
+          <Text style={estilos.btnText}>¡Sumar Clic (+)</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -26,4 +37,6 @@ const estilos = StyleSheet.create({
   h1: { fontSize: 20, fontWeight: "bold", color: "#333", textAlign: "center", marginBottom: 8 },
   description: { fontSize: 13, color: "#666", textAlign: "center", marginBottom: 15 },
   counterBox: { fontSize: 48, color: "#2196F3", fontWeight: "bold", marginBottom: 15 },
+  btnClick: { backgroundColor: "#4CAF50", padding: 10, borderRadius: 8, width: "100%", alignItems: "center", marginBottom: 10 },
+  btnText: { color: "white", fontSize: 15, fontWeight: "bold" },
 });
