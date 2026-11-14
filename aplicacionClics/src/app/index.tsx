@@ -4,8 +4,14 @@ import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 export default function App() {
   const [contador, setContador] = useState(0);
 
+  // Función para incrementar con captura de hora
   const incrementarContador = () => {
-    setContador(contador + 1);
+    const nuevoContador = contador + 1;
+    const ahora = new Date();
+    const horaFormateada = ahora.toLocaleTimeString();
+
+    setContador(nuevoContador);
+    console.log("Hora registrada:", horaFormateada);
   };
 
   return (
@@ -39,4 +45,4 @@ const estilos = StyleSheet.create({
   counterBox: { fontSize: 48, color: "#2196F3", fontWeight: "bold", marginBottom: 15 },
   btnClick: { backgroundColor: "#4CAF50", padding: 10, borderRadius: 8, width: "100%", alignItems: "center", marginBottom: 10 },
   btnText: { color: "white", fontSize: 15, fontWeight: "bold" },
-});
+}); 
