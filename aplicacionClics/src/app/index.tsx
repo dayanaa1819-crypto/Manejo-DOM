@@ -78,8 +78,14 @@ export default function App() {
           </View>
 
           <ScrollView style={estilos.tableBody}>
-            {registros.map((item) => (
-              <View key={item.id} style={estilos.tr}>
+            {registros.map((item, index) => (
+              <View
+                key={item.id}
+                style={[
+                  estilos.tr,
+                  index % 2 === 0 ? estilos.trEven : null,
+                ]}
+              >
                 <Text style={[estilos.td, estilos.cellNumero]}>{item.numero}</Text>
                 <Text style={[estilos.td, estilos.cellHora]}>{item.hora}</Text>
               </View>
@@ -105,6 +111,7 @@ const estilos = StyleSheet.create({
   tableHeader: { flexDirection: "row", backgroundColor: "#f8f9fa", borderBottomWidth: 1, borderBottomColor: "#ddd", paddingVertical: 6 },
   tableBody: { maxHeight: 110 },
   tr: { flexDirection: "row", borderBottomWidth: 1, borderBottomColor: "#eee", paddingVertical: 6 },
+  trEven: { backgroundColor: "#fafafa" }, // Estilo para filas pares
   td: { fontSize: 12, color: "#333", textAlign: "center" },
   th: { fontSize: 12, fontWeight: "bold", color: "#333", textAlign: "center" },
   cellNumero: { flex: 1 },
